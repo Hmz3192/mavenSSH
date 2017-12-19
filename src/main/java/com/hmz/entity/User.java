@@ -17,13 +17,13 @@ public class User {
     @GeneratedValue(generator = "id")
     @GenericGenerator(name = "id", strategy = "native")
     private int id;
-    @Column(name="number", length=20)
+    @Column(name="number", length=255) // phone
     private String number;
-    @Column(name="name", length=20)
+    @Column(name="name", length=255)
     private String name;
-    @Column(name="password", length=20)
+    @Column(name="password", length=255)
     private String password;
-    @Column(name="mes", length=20)
+    @Column(name="mes", length=255) //id_card
     private String mes;
 
 
