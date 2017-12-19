@@ -1,64 +1,38 @@
 package com.hmz.entity;
 
-
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
-/**
- * @Author Hu mingzhi
- * Created by ThinKPad on 2017/9/8.
- */
 @Entity
-@Table(name = "user")
+@Table(name = "user", schema = "hotelmanagement", catalog = "")
 public class User {
+    private int userId;
+    private String account;
+    private String password;
+    private String phone;
+    private String idCard;
 
     @Id
-    @GeneratedValue(generator = "id")
-    @GenericGenerator(name = "id", strategy = "native")
-    private int id;
-    @Column(name="number", length=255) // phone
-    private String number;
-    @Column(name="name", length=255)
-    private String name;
-    @Column(name="password", length=255)
-    private String password;
-    @Column(name="mes", length=255) //id_card
-    private String mes;
-
-
-    public User(int id, String number, String name, String password, String mes) {
-        this.id = id;
-        this.number = number;
-        this.name = name;
-        this.password = password;
-        this.mes = mes;
+    @Column(name = "user_id", nullable = false)
+    public int getUserId() {
+        return userId;
     }
 
-    public int getId() {
-        return id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @Basic
+    @Column(name = "account", nullable = false, length = 255)
+    public String getAccount() {
+        return account;
     }
 
-    public String getNumber() {
-        return number;
+    public void setAccount(String account) {
+        this.account = account;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
+    @Basic
+    @Column(name = "password", nullable = false, length = 255)
     public String getPassword() {
         return password;
     }
@@ -67,25 +41,49 @@ public class User {
         this.password = password;
     }
 
-    public String getMes() {
-        return mes;
+    @Basic
+    @Column(name = "phone", nullable = true, length = 255)
+    public String getPhone() {
+        return phone;
     }
 
-    public void setMes(String mes) {
-        this.mes = mes;
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Basic
+    @Column(name = "id_card", nullable = false, length = 255)
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
     }
 
     @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", number='" + number + '\'' +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", mes='" + mes + '\'' +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (userId != user.userId) return false;
+        if (account != null ? !account.equals(user.account) : user.account != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
+        if (idCard != null ? !idCard.equals(user.idCard) : user.idCard != null) return false;
+
+        return true;
     }
 
-    public User() {
+    @Override
+    public int hashCode() {
+        int result = userId;
+        result = 31 * result + (account != null ? account.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
+        return result;
     }
 }

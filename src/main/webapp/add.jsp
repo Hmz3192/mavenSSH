@@ -22,11 +22,11 @@
 			<form action="${pageContext.request.contextPath }/User_add" method="post">
 				<div class="form-group">
 					<label for="">姓名:</label>
-					<input class="form-input-txt" type="text" name="name" value="" />
+					<input class="form-input-txt" type="text" name="account" value="" />
 				</div>
 				<div class="form-group">
 					<label for="">学号:</label>
-					<input class="form-input-txt" type="text" name="number" value="" />
+					<input class="form-input-txt" type="text" name="phone" value="" />
 				</div>
 				<div class="form-group">
 					<label for="">密码:</label>
@@ -34,7 +34,7 @@
 				</div>
 				<div class="form-group">
 					<label for="">介绍:</label>
-					<input class="form-input-txt" type="text" name="mes" value="" />
+					<input class="form-input-txt" type="text" name="idCard" value="" />
 				</div>
 			
 		

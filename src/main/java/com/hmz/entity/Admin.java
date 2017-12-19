@@ -1,11 +1,9 @@
 package com.hmz.entity;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "admin", schema = "hotelmanagement", catalog = "")
 public class Admin {
     private int adminId;
     private String account;

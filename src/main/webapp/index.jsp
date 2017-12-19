@@ -16,7 +16,7 @@
             <s:form action="User_login" method="post" namespace="/" >
                 <li class="login-item">
                     <span>用户名：</span>
-                    <input type="text" name="name" class="login_input">
+                    <input type="text" name="account" class="login_input">
                 </li>
                 <li class="login-item">
                     <span>密　码：</span>

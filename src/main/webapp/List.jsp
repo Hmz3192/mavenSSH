@@ -40,22 +40,22 @@
                     <s:iterator value="#session.userList" var="usr">
                         <tr>
                             <th>
-                                <s:property value="#usr.id"/>
+                                <s:property value="#usr.userId"/>
                             </th>
                             <th>
-                               <s:property value="#usr.number"/>
+                               <s:property value="#usr.account"/>
                             </th>
                             <th>
-                               <s:property value="#usr.name"/>
+                               <s:property value="#usr.phone"/>
                             </th>
                             <th>
-                              <s:property value="#usr.mes"/>
+                              <s:property value="#usr.idCard"/>
                             </th>
                             <th>
                                 <div class="page">
-                                    <a class="page-btn" href="<%=path%>/User_edit?id=<s:property value="#usr.id"/>">编辑</a>
+                                    <a class="page-btn" href="<%=path%>/User_edit?id=<s:property value="#usr.userId"/>">编辑</a>
                                     &nbsp;&nbsp;&nbsp;
-                                    <a class="page-btn" href='<%=path %>/User_delete?id=<s:property value="#usr.id"/>' onclick="javascript: return confirm('真的要删除吗？');">删除</a>
+                                    <a class="page-btn" href='<%=path %>/User_delete?id=<s:property value="#usr.userId"/>' onclick="javascript: return confirm('真的要删除吗？');">删除</a>
                                 </div>
                             </th>
                         </tr>

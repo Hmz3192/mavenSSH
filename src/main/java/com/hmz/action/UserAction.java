@@ -22,7 +22,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
     @Resource
     private UserService userService;
     private User user = new User();
-
+    //登陆
     public String login() {
         boolean login = userService.login(user);
         if (login) {
@@ -31,7 +31,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
         else
             return "fail";
     }
-
+    //查找所有酒店及房间
     public String queryAll( ) {
         ActionContext context=ActionContext.getContext();
         List<User> userList = userService.queryAll();
@@ -41,7 +41,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
         context.getSession().put("userList",userList);
         return "querySuccess";
     }
-
+    //删除酒店，房间
     public String delete() {
 
         Integer id = Integer.valueOf(request.getParameter("id"));
@@ -49,7 +49,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
         return "delete_success";
 
     }
-
+    //查找所有人
     public String queryList( ) {
         ActionContext context=ActionContext.getContext();
         List<User> userList = userService.queryAll();
@@ -59,24 +59,24 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
         context.getSession().put("userList",userList);
         return "queryListSuccess";
     }
-
+    //增加房间
     public String add() {
         userService.add(user);
         return "add_success";
     }
-
+    //编辑房间
     public String edit() {
         Integer id = Integer.valueOf(request.getParameter("id"));
         User user = userService.queryOne(id);
         session.setAttribute("user", user);
         return "edit_success";
     }
-
+    //更新房间
     public String update() {
         userService.updateOne(user);
         return "update_success";
     }
-
+    //退出
     public String out() {
         session.invalidate();
         try {

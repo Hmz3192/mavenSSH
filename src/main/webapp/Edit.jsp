@@ -25,15 +25,15 @@
 			<form action="${pageContext.request.contextPath }/User_update" method="post">
 				<div class="form-group">
 					<label for="">ID:</label>
-					<input class="form-input-txt" readonly="readonly" type="text" name="id" value='<s:property value="#session.user.id"/>' />
+					<input class="form-input-txt" readonly="readonly" type="text" name="id" value='<s:property value="#session.user.userId"/>' />
 				</div>
 				<div class="form-group">
 					<label for="">姓名:</label>
-					<input class="form-input-txt" type="text" name="name" value='<s:property value="#session.user.name"/>' />
+					<input class="form-input-txt" type="text" name="name" value='<s:property value="#session.user.account"/>' />
 				</div>
 				<div class="form-group">
 					<label for="">学号:</label>
-					<input class="form-input-txt" type="text" name="number" value='<s:property value="#session.user.number"/>' />
+					<input class="form-input-txt" type="text" name="number" value='<s:property value="#session.user.phone"/>' />
 				</div>
 				<div class="form-group">
 					<label for="">密码:</label>
@@ -41,7 +41,7 @@
 				</div>
 				<div class="form-group">
 					<label for="">介绍:</label>
-					<input class="form-input-txt" type="text" name="mes" value='<s:property value="#session.user.mes"/>' />
+					<input class="form-input-txt" type="text" name="mes" value='<s:property value="#session.user.idCard"/>' />
 				</div>
 			
 		

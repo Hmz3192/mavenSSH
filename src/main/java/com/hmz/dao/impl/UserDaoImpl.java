@@ -23,8 +23,8 @@ public class UserDaoImpl implements UserDao{
     }
 
     public boolean login(User user) {
-        String hql = "from User u where u.name = ? and u.password = ?";
-         List<User>  userList = (List<User>) this.template.find(hql, new Object[]{user.getName(),user.getPassword()});
+        String hql = "from User u where u.account = ? and u.password = ?";
+         List<User>  userList = (List<User>) this.template.find(hql, new Object[]{user.getAccount(),user.getPassword()});
         if (userList.size() > 0) {
             return true;
         }else
@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao{
     }
 
     public boolean delete(int id) {
-        int i = this.template.bulkUpdate("delete from User where id=" + id);
+        int i = this.template.bulkUpdate("delete from User where userId=" + id);
         if (i == 1) {
             return true;
         }
@@ -51,7 +51,7 @@ public class UserDaoImpl implements UserDao{
     }
 
     public User queryOne(Integer id) {
-        List<User> userList = (List<User>) this.template.find("from User u where u.id = ?", new Integer(id));
+        List<User> userList = (List<User>) this.template.find("from User u where u.userId = ?", new Integer(id));
         User user = userList.get(0);
         return user;
     }
