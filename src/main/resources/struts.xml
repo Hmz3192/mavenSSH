@@ -8,9 +8,20 @@
     <package name="default" extends="struts-default" namespace="/">
         <default-action-ref name="default"/>
         <action name="default">
-            <result>/index.jsp</result>
+            <result>/jsp/back/login.jsp</result>
         </action>
     </package>
+
+    <package name="back" extends="struts-default" namespace="/back"  strict-method-invocation="false">
+        <action name="*_*" class="com.hmz.action.{1}Action" method="{2}">
+            <result name="toOperator" >/jsp/back/operator.jsp</result>
+            <result name="toBook" >/jsp/back/book.jsp</result>
+            <result name="toCustomer" >/jsp/back/customer.jsp</result>
+            <result name="tochart" >/jsp/back/chart.jsp</result>
+
+        </action>
+    </package>
+
 
     <!-- 商品相关请求转发 -->
     <!-- Struts2在2.5版本后添加strict-method-invocation(严格方法访问)，默认为true，不能使用动态方法调用功能，故需设为false -->

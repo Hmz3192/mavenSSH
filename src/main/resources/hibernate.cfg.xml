@@ -6,9 +6,9 @@
   <session-factory>
     <!-- Database connection settings -->
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="connection.url">jdbc:mysql://localhost/hotelmanagement</property>
+    <property name="connection.url">jdbc:mysql://101.201.234.133:3306/hotelmanagement</property>
     <property name="connection.username">root</property>
-    <property name="connection.password">123456</property>
+    <property name="connection.password">Humingzhi3192</property>
     <!-- JDBC connection pool (use the built-in) -->
     <!--
     <property name="connection.pool_size">1</property>

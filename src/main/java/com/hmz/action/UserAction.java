@@ -15,7 +15,6 @@ import java.util.List;
  * @Author Hu mingzhi
  * Created by ThinKPad on 2017/9/8.
  */
-@Controller
 @Scope("prototype")
 public class UserAction extends SuperAction implements ModelDriven<User>{
 
