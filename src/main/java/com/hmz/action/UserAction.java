@@ -49,7 +49,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
         return "delete_success";
 
     }
-    //查找所有人
+    //管理员查找所有人
     public String queryList( ) {
         ActionContext context=ActionContext.getContext();
         List<User> userList = userService.queryAll();
@@ -59,19 +59,19 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
         context.getSession().put("userList",userList);
         return "queryListSuccess";
     }
-    //增加房间
+    //管理员增加房间
     public String add() {
         userService.add(user);
         return "add_success";
     }
-    //编辑房间
+    //管理员编辑房间
     public String edit() {
         Integer id = Integer.valueOf(request.getParameter("id"));
         User user = userService.queryOne(id);
         session.setAttribute("user", user);
         return "edit_success";
     }
-    //更新房间
+    //管理员更新房间
     public String update() {
         userService.updateOne(user);
         return "update_success";
