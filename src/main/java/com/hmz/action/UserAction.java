@@ -13,6 +13,7 @@ import com.hmz.service.UserService;
 import com.hmz.util.SuperAction;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Scope;
 
 import javax.annotation.Resource;
@@ -88,23 +89,25 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
         for (User user : users) {
             UserSale userSale = new UserSale();
             SaleRecord one = saleRecordService.getOne(user.getUserId());
-            HotelRoom room = roomService.getOne(one.getRoomId());
-            userSale.setId(user.getUserId());
-            userSale.setInDay(one.getStartTime());
-            userSale.setOutDay(one.getEndTime());
-            Integer outDay = Integer.valueOf(one.getEndTime().substring(one.getEndTime().length()-2,one.getEndTime().length()));;
-            Integer inDay = Integer.valueOf(one.getStartTime().substring(one.getStartTime().length()-2,one.getStartTime().length()));;
-            System.out.println(outDay + "-" + inDay);
-            Integer day = outDay - inDay;
-            System.out.println(day + "");
-            userSale.setMoney(String.valueOf(room.getPrice() * day));
-            userSale.setName(user.getAccount());
-            userSale.setRoomLocation(room.getLocation());
-            userSale.setType(room.getRoomKind());
-            userSale.setVip(user.getVip());
-            userSale.setMonenyState(one.getMoneyState());
-            userSale.setLiveState(one.getOperateKind());
-            userSales.add(userSale);
+            if (one.getEndTime() != null || one.getEndTime() == "") {
+                HotelRoom room = roomService.getOne(one.getRoomId());
+                userSale.setId(user.getUserId());
+                userSale.setInDay(one.getStartTime());
+                userSale.setOutDay(one.getEndTime());
+                Integer outDay = Integer.valueOf(one.getEndTime().substring(one.getEndTime().length()-2,one.getEndTime().length()));;
+                Integer inDay = Integer.valueOf(one.getStartTime().substring(one.getStartTime().length()-2,one.getStartTime().length()));;
+                System.out.println(outDay + "-" + inDay);
+                Integer day = outDay - inDay;
+                System.out.println(day + "");
+                userSale.setMoney(String.valueOf(room.getPrice() * day));
+                userSale.setName(user.getAccount());
+                userSale.setRoomLocation(room.getLocation());
+                userSale.setType(room.getRoomKind());
+                userSale.setVip(user.getVip());
+                userSale.setMonenyState(one.getMoneyState());
+                userSale.setLiveState(one.getOperateKind());
+                userSales.add(userSale);
+            } else break;
         }
         //往request里放attribute
 //        context.put("userList",userList);

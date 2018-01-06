@@ -3,12 +3,20 @@ package com.hmz.util;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.util.ServletContextAware;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 /**
  * @Author Hu mingzhi
@@ -38,8 +46,8 @@ public class SuperAction extends ActionSupport implements ServletRequestAware,
     }
 
     public void setServletContext(javax.servlet.ServletContext application) {
-
-
         this.application = application;
     }
+
+
 }

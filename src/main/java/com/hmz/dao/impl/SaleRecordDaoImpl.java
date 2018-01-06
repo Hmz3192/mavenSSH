@@ -14,8 +14,11 @@ public class SaleRecordDaoImpl extends MyHibaernateTemplate implements SaleRecor
 
 
     public SaleRecord getOneSaleRecord(Integer userId) {
+        SaleRecord saleRecord = new SaleRecord();
         List<SaleRecord> saleRecords = (List<SaleRecord>) this.template.find("from SaleRecord u where u.userId = ?", new Integer(userId));
-        SaleRecord saleRecord = saleRecords.get(0);
+        if (saleRecords.size() > 0) {
+             saleRecord = saleRecords.get(0);
+        }
         return saleRecord;
     }
 

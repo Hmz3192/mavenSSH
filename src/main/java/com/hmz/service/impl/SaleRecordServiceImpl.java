@@ -15,7 +15,9 @@ public class SaleRecordServiceImpl implements SaleRecordService {
     private SaleRecordDao saleRecordDao;
 
     public SaleRecord getOne(Integer userId) {
-        return saleRecordDao.getOneSaleRecord(userId);
+        SaleRecord oneSaleRecord = saleRecordDao.getOneSaleRecord(userId);
+            return oneSaleRecord;
+
     }
 
     public List<SaleRecord> getAllBooking() {

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="org.apache.struts2.ServletActionContext" %><%--
   Created by IntelliJ IDEA.
   User: ThinKPad
   Date: 2018/1/5
@@ -155,7 +155,9 @@
                         <div class="panel panel-primary">
                             <div class="number">
                                 <h3>
-                                    <h3>44,023</h3>
+                                    <% ServletContext sc = ServletActionContext.getServletContext(); Integer counter = (Integer) sc.getAttribute("AccessCount")+1; sc.setAttribute("AccessCount", counter);%>
+
+                                        <h3><%= counter%></h3>
                                     <small>每日访问量</small>
                                 </h3>
                             </div>
