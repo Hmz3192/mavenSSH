@@ -8,8 +8,8 @@ public class SaleRecord {
     private int id;
     private int userId;
     private Integer workerId;
-    private int hotelId;
-    private int roomId;
+    private Integer hotelId;
+    private Integer roomId;
     private String operateTime;
     private String operateKind;
     private String startTime;
@@ -47,22 +47,22 @@ public class SaleRecord {
     }
 
     @Basic
-    @Column(name = "hotel_id", nullable = false)
-    public int getHotelId() {
+    @Column(name = "hotel_id", nullable = true)
+    public Integer getHotelId() {
         return hotelId;
     }
 
-    public void setHotelId(int hotelId) {
+    public void setHotelId(Integer hotelId) {
         this.hotelId = hotelId;
     }
 
     @Basic
-    @Column(name = "room_id", nullable = false)
-    public int getRoomId() {
+    @Column(name = "room_id", nullable = true)
+    public Integer getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(int roomId) {
+    public void setRoomId(Integer roomId) {
         this.roomId = roomId;
     }
 
@@ -77,7 +77,7 @@ public class SaleRecord {
     }
 
     @Basic
-    @Column(name = "operate_kind", nullable = false, length = 1)
+    @Column(name = "operate_kind", nullable = false, length = 255)
     public String getOperateKind() {
         return operateKind;
     }
@@ -107,7 +107,7 @@ public class SaleRecord {
     }
 
     @Basic
-    @Column(name = "money_state", nullable = false, length = 1)
+    @Column(name = "money_state", nullable = false, length = 255)
     public String getMoneyState() {
         return moneyState;
     }
@@ -125,9 +125,9 @@ public class SaleRecord {
 
         if (id != that.id) return false;
         if (userId != that.userId) return false;
-        if (hotelId != that.hotelId) return false;
-        if (roomId != that.roomId) return false;
         if (workerId != null ? !workerId.equals(that.workerId) : that.workerId != null) return false;
+        if (hotelId != null ? !hotelId.equals(that.hotelId) : that.hotelId != null) return false;
+        if (roomId != null ? !roomId.equals(that.roomId) : that.roomId != null) return false;
         if (operateTime != null ? !operateTime.equals(that.operateTime) : that.operateTime != null) return false;
         if (operateKind != null ? !operateKind.equals(that.operateKind) : that.operateKind != null) return false;
         if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
@@ -142,8 +142,8 @@ public class SaleRecord {
         int result = id;
         result = 31 * result + userId;
         result = 31 * result + (workerId != null ? workerId.hashCode() : 0);
-        result = 31 * result + hotelId;
-        result = 31 * result + roomId;
+        result = 31 * result + (hotelId != null ? hotelId.hashCode() : 0);
+        result = 31 * result + (roomId != null ? roomId.hashCode() : 0);
         result = 31 * result + (operateTime != null ? operateTime.hashCode() : 0);
         result = 31 * result + (operateKind != null ? operateKind.hashCode() : 0);
         result = 31 * result + (startTime != null ? startTime.hashCode() : 0);

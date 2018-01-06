@@ -1,5 +1,6 @@
 package com.hmz.util;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,7 @@ public class SuperAction extends ActionSupport implements ServletRequestAware,
     protected HttpServletResponse response;
     protected HttpSession session;
     protected ServletContext application;
+    private ActionContext context;
 
 
     public void setServletRequest(javax.servlet.http.HttpServletRequest request) {
@@ -30,7 +32,14 @@ public class SuperAction extends ActionSupport implements ServletRequestAware,
         this.response = response;
     }
 
+
+    protected  static ActionContext getContextInstance() {
+        return ActionContext.getContext();
+    }
+
     public void setServletContext(javax.servlet.ServletContext application) {
+
+
         this.application = application;
     }
 }

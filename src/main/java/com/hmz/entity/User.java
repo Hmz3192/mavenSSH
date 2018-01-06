@@ -10,6 +10,7 @@ public class User {
     private String password;
     private String phone;
     private String idCard;
+    private Integer vip;
 
     @Id
     @Column(name = "user_id", nullable = false)
@@ -61,6 +62,16 @@ public class User {
         this.idCard = idCard;
     }
 
+    @Basic
+    @Column(name = "vip", nullable = true)
+    public Integer getVip() {
+        return vip;
+    }
+
+    public void setVip(Integer vip) {
+        this.vip = vip;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,6 +84,7 @@ public class User {
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (phone != null ? !phone.equals(user.phone) : user.phone != null) return false;
         if (idCard != null ? !idCard.equals(user.idCard) : user.idCard != null) return false;
+        if (vip != null ? !vip.equals(user.vip) : user.vip != null) return false;
 
         return true;
     }
@@ -84,6 +96,7 @@ public class User {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
+        result = 31 * result + (vip != null ? vip.hashCode() : 0);
         return result;
     }
 }

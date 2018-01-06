@@ -115,10 +115,10 @@
                     <a href="#"><i class="glyphicon glyphicon-list-alt"></i><span class="fa arrow"></span> 客户管理</a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <s:a action="Back_toBook"   namespace="/back">预定管理</s:a>
+                            <s:a action="User_getBookingUser"   namespace="/back">预定管理</s:a>
                         </li>
                         <li>
-                            <s:a action="Back_toCustomer"   namespace="/back">客户管理</s:a>
+                            <s:a action="User_getAllUser"   namespace="/back">客户管理</s:a>
                         </li>
                         <li>
                             <s:a action="Back_tochart" class="active-menu" namespace="/back">业务统计</s:a>
@@ -219,32 +219,6 @@
                 </div>
 
             </div>
-            <div class="row">
-                <div class="col-sm-6 col-xs-12">
-                    <div class="panel panel-default chartJs">
-                        <div class="panel-heading">
-                            <div class="card-title">
-                                <div class="title">线形图</div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <canvas id="line-chart" class="chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xs-12">
-                    <div class="panel panel-default chartJs">
-                        <div class="panel-heading">
-                            <div class="card-title">
-                                <div class="title">条形图</div>
-                            </div>
-                        </div>
-                        <div class="panel-body">
-                            <canvas id="bar-chart" class="chart"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-xs-6 col-md-3">
@@ -285,7 +259,6 @@
                 </div>
             </div><!--/.row-->
 
-            <div class="copyrights">原网址 <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
 
             <div class="row">
                 <div class="col-md-5">
@@ -346,13 +319,6 @@
             <!-- /. ROW  -->
 
 
-
-
-
-
-            <!-- /. ROW  -->
-
-
             <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
 
 
@@ -386,7 +352,6 @@
 
 
 <!-- Chart Js -->
-<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/Chart.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/chartjs.js"></script>
 
 </body>

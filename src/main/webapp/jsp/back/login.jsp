@@ -28,34 +28,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
-                <s:form class="form-horizontal" action="Back_toOperator" namespace="/back">
-                    <span class="heading">登录</span>
+                <s:form class="form-horizontal" action="Admin_login" namespace="/back">
+                    <span class="heading">管理员登录</span>
                     <div class="form-group">
-                        <input type="number" class="form-control" id="inputEmail3" placeholder="账 号">
+                        <input type="text" class="form-control" id="inputEmail3"  name="account" placeholder="账 号">
                         <i class="fa fa-user"></i>
                     </div>
                     <div class="form-group help">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="密　码">
+                        <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="密　码">
                         <i class="fa fa-lock"></i>
                         <a href="#" class="fa fa-question-circle"></a>
                     </div>
-
-
-                    <div class="form-group">
-                        <div class="main-checkbox">
-                            <input type="checkbox" value="Non11e" id="checkbox1" name="check"/>
-                            <label for="checkbox1"></label>
-                        </div>
-                        <span class="text">工作人员</span>
-                        <div class="main-checkbox">
-                            <input type="checkbox" value="None" id="checkbox2" name="check"/>
-                            <label for="checkbox1"></label>
-                        </div>
-                        <span class="text">管理员</span>
-
-                         <s:submit  cssStyle="width:200px;margin-left: 180px"  Class="btn btn-default btn-lg" name="name" value="登录"></s:submit>
-
-                    </div>
+                    <s:submit  cssStyle="width:200px;margin-left: 180px"  Class="btn btn-default btn-lg" name="name" value="登录"></s:submit>
 
                     <!--
                                <input type="button" class="loginlog btn-primary" value="立即登录" onclick="display_alert()"/>

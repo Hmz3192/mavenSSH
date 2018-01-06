@@ -111,10 +111,10 @@
                     <a href="#"><i class="glyphicon glyphicon-list-alt"></i><span class="fa arrow"></span> 客户管理</a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <s:a action="Back_toBook"  class="active-menu" namespace="/back">预定管理</s:a>
+                            <s:a action="User_getBookingUser"  class="active-menu" namespace="/back">预定管理</s:a>
                         </li>
                         <li>
-                            <s:a action="Back_toCustomer" namespace="/back">客户管理</s:a>
+                            <s:a action="User_getAllUser" namespace="/back">客户管理</s:a>
                         </li>
                         <li>
                             <s:a action="Back_tochart" namespace="/back">业务统计</s:a>
@@ -144,141 +144,40 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="bs-example" data-example-id="hoverable-table">
+                            <s:if test="#session.bookingUsers == null || #session.bookingUsers.size() == 0">
+                                    没有任何信息
+                            </s:if>
+                            <s:else>
                                 <table class="table table-hover table-bordered editable">
                                     <caption>预订信息</caption>
                                     <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th width="170px">房型</th>
-                                        <th>姓名</th>
-                                        <th>预定时间</th>
-                                        <th>预定天数</th>
-                                        <th>操作</th>
+                                        <th style="width: 5%">#</th>
+                                        <th style="width: 15%">房型</th>
+                                        <th style="width: 15%">姓名</th>
+                                        <th style="width: 15%">预定时间</th>
+                                        <th style="width: 15%">预定天数</th>
+                                        <th style="width: 10%">状态</th>
+                                        <th style="width: 25%">操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
+                                <s:iterator value="#session.bookingUsers" var="booking">
+                                     <tr>
+                                        <td><s:property value="#booking.id"/></td>
+                                        <td><s:property value="#booking.roomKind"/></td>
+                                        <td><s:property value="#booking.name"/></td>
+                                        <td><s:property value="#booking.inDay"/></td>
+                                        <td><s:property value="#booking.liveDay"/></td>
+                                         <td><s:property value="#booking.state"/></td>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> 确认</button>
+                                            <button class="btn btn-danger"><i class="fa fa-pencil"></i> 取消</button></td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">3</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">4</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">5</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">6</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">7</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">8</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">9</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">10</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.11</td>
-                                        <td>2</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">11</th>
-                                        <td>精致大床房</td>
-                                        <td>王先生</td>
-                                        <td>12.10</td>
-                                        <td>1</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">12</th>
-                                        <td>个性大床房</td>
-                                        <td>刘小姐</td>
-                                        <td>12.12</td>
-                                        <td>3</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">13</th>
-                                        <td>商务套间</td>
-                                        <td>马小姐</td>
-                                        <td>12.12</td>
-                                        <td>1</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">14</th>
-                                        <td>商务套间</td>
-                                        <td>马小姐</td>
-                                        <td>12.12</td>
-                                        <td>1</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">15</th>
-                                        <td>商务套间</td>
-                                        <td>马小姐</td>
-                                        <td>12.12</td>
-                                        <td>1</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">16</th>
-                                        <td>豪华套间</td>
-                                        <td>薛先生</td>
-                                        <td>12.5</td>
-                                        <td>10</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
+                                </s:iterator>
+
                                     </tbody>
                                 </table>
+                                </s:else>
                                 <nav class="pull-right">
                                     <ul class="pagination">
                                         <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -347,60 +246,15 @@
         </div>
 
         <div id="page-inner">
-            <footer><p>Copyright &copy; Xuezhongpo<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
+            <footer><p>Copyright &copy; Xuezhongpo</p></footer>
         </div>
 
     </div>
+
 </div>
 <script src="${pageContext.request.contextPath }/assets/js/jquery-1.10.2.js"></script>
 <script src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath }/assets/js/editTable.js"></script>
-<script>
-    $(function() {
-//$('.edit').handleTable({"cancel" : "<span class='glyphicon glyphicon-remove'></span>"});
-        $('.editable').handleTable({
-            "handleFirst" : true,
-            "cancel" : " <span class='glyphicon glyphicon-remove'></span> ",
-            "edit" : " <span class='glyphicon glyphicon-edit'></span> ",
-            "add" : " <span class='glyphicon glyphicon-plus'></span> ",
-            "save" : " <span class='glyphicon glyphicon-saved'></span> ",
-            "confirm" : " <span class='glyphicon glyphicon-ok'></span> ",
-            "operatePos" : -1,
-            "editableCols" : [1,2,3,4],
-            "order": ["add","edit"],
-            "saveCallback" : function(data, isSuccess) { //这里可以写ajax内容，用于保存编辑后的内容
-//data: 返回的数据
-//isSucess: 方法，用于保存数据成功后，将可编辑状态变为不可编辑状态
-                var flag = true; //ajax请求成功（保存数据成功），才回调isSuccess函数（修改保存状态为编辑状态）
-                if(flag) {
-                    isSuccess();
-                    alert(data + " 保存成功");
-                } else {
-                    alert(data + " 保存失败");
-                }
-                return true;
-            },
-            "addCallback" : function(data,isSuccess) {
-                var flag = true;
-                if(flag) {
-                    isSuccess();
-                    alert(data + " 增加成功");
-                } else {
-                    alert(data + " 增加失败");
-                }
-            },
-            "delCallback" : function(isSuccess) {
-                var flag = true;
-                if(flag) {
-                    isSuccess();
-                    alert("删除成功");
-                } else {
-                    alert("删除失败");
-                }
-            }
-        });
-    });
-</script>
+
 </body>
 </html>
 

@@ -11,9 +11,9 @@
 <body>
 <div class="page">
     <div class="loginwarrp">
-        <div class="logo">管理员登陆</div>
+        <div class="logo">操作员登陆</div>
         <div class="login_form">
-            <s:form action="User_login" method="post" namespace="/" >
+            <form action="${pageContext.request.contextPath }/back/Operator_login" method="post"  >
                 <li class="login-item">
                     <span>用户名：</span>
                     <input type="text" name="account" class="login_input">
@@ -22,16 +22,17 @@
                     <span>密　码：</span>
                     <input type="password" name="password" class="login_input">
                 </li>
-                <li class="login-item verify">
-                    <span>验证码：</span>
-                    <input type="text" name="CheckCode" class="login_input verify_input">
-                </li>
-                <img src="images/verify.PNG" border="0" class="verifyimg" />
+                <%--<li class="login-item verify">--%>
+                    <%--<span>验证码：</span>--%>
+                    <%--<input type="text" name="CheckCode" class="login_input verify_input">--%>
+                <%--</li>--%>
+                <%--<img src="images/verify.PNG" border="0" class="verifyimg" />--%>
                 <div class="clearfix"></div>
                 <li class="login-sub">
                     <input type="submit" name="Submit" value="登录" />
+                    <%--<s:submit value="登录" ></s:submit>--%>
                 </li>
-            </s:form>
+            </form>
         </div>
     </div>
 </div>

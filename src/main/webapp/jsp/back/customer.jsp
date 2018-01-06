@@ -111,10 +111,10 @@
                     <a href="#"><i class="glyphicon glyphicon-list-alt"></i><span class="fa arrow"></span> 客户管理</a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <s:a action="Back_toBook"   namespace="/back">预定管理</s:a>
+                            <s:a action="User_getBookingUser"   namespace="/back">预定管理</s:a>
                         </li>
                         <li>
-                            <s:a action="Back_toCustomer"  class="active-menu" namespace="/back">客户管理</s:a>
+                            <s:a action="User_getAllUser"  class="active-menu" namespace="/back">客户管理</s:a>
                         </li>
                         <li>
                             <s:a action="Back_tochart" namespace="/back">业务统计</s:a>
@@ -144,37 +144,66 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="bs-example" data-example-id="hoverable-table">
+                                <s:if test="#session.userSales == null || #session.userSales.size() == 0">
+                                     没有任何信息
+                                </s:if>
+                                <s:else>
                                 <table class="table table-hover table-bordered editable">
                                     <caption>客户信息</caption>
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th width="170px">房型</th>
                                         <th>姓名</th>
+                                        <th>房型</th>
+                                        <th>房号</th>
                                         <th>入住日期</th>
-                                        <th>预订退房日期</th>
-                                        <th>总计</th>
+                                        <th>预计退房日期</th>
+                                        <th>费用总计</th>
+                                        <th>VIP</th>
+                                        <th>入住状态</th>
+                                        <th>账单状态</th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.4</td>
-                                        <td>12.5</td>
-                                        <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
+                                    <s:iterator value="#session.userSales" var="sale">
+                                        <s:if test="#sale.vip == 1">
+                                            <tr class="danger">
+                                        </s:if>
+                                        <s:else>
+                                            <tr>
+                                        </s:else>
+                                        <td><s:property value="#sale.id"/></td>
+                                        <td><s:property value="#sale.name"/></td>
+                                        <td><s:property value="#sale.type"/></td>
+                                        <td><s:property value="#sale.roomLocation"/></td>
+                                        <td><s:property value="#sale.inDay"/></td>
+                                        <td><s:property value="#sale.outDay"/></td>
+                                        <td><s:property value="#sale.money"/></td>
+                                        <s:if test="#sale.vip == 1">
+                                            <td>超级VIP</td>
+                                        </s:if>
+                                        <s:else>
+                                            <td>普通VIP</td>
+                                        </s:else>
+                                        <td><s:property value="#sale.liveState"/></td>
+                                        <td><s:property value="#sale.monenyState"/></td>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> 结账</button>
+                                           <%-- <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>--%>
                                     </tr>
-                                    <tr>
+                                        </s:iterator>
+                                    </tbody>
+                                </table>
+                                </s:else>
+                               <%--     <tr>
                                         <th scope="row">2</th>
                                         <td>特色标间</td>
                                         <td>李先生</td>
                                         <td>12.4</td>
                                         <td>12.5</td>
                                         <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
+                                            <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>
                                     </tr> <tr>
                                         <th scope="row">3</th>
                                         <td>特色标间</td>
@@ -182,7 +211,8 @@
                                         <td>12.4</td>
                                         <td>12.5</td>
                                         <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
+                                            <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>
                                     </tr> <tr>
                                         <th scope="row">4</th>
                                         <td>特色标间</td>
@@ -190,7 +220,8 @@
                                         <td>12.4</td>
                                         <td>12.5</td>
                                         <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
+                                            <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>
                                     </tr> <tr>
                                         <th scope="row">5</th>
                                         <td>特色标间</td>
@@ -198,7 +229,8 @@
                                         <td>12.4</td>
                                         <td>12.5</td>
                                         <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
+                                            <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>
                                     </tr> <tr>
                                         <th scope="row">6</th>
                                         <td>特色标间</td>
@@ -206,7 +238,8 @@
                                         <td>12.4</td>
                                         <td>12.5</td>
                                         <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
+                                            <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>
                                     </tr> <tr>
                                         <th scope="row">7</th>
                                         <td>特色标间</td>
@@ -214,7 +247,8 @@
                                         <td>12.4</td>
                                         <td>12.5</td>
                                         <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
+                                            <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>
                                     </tr> <tr>
                                         <th scope="row">8</th>
                                         <td>特色标间</td>
@@ -222,80 +256,9 @@
                                         <td>12.4</td>
                                         <td>12.5</td>
                                         <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">9</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.4</td>
-                                        <td>12.5</td>
-                                        <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr> <tr>
-                                        <th scope="row">10</th>
-                                        <td>特色标间</td>
-                                        <td>李先生</td>
-                                        <td>12.4</td>
-                                        <td>12.5</td>
-                                        <td>240</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">11</th>
-                                        <td>精致大床房</td>
-                                        <td>王先生</td>
-                                        <td>12.6</td>
-                                        <td>12.8</td>
-                                        <td>300</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">12</th>
-                                        <td>个性大床房</td>
-                                        <td>刘小姐</td>
-                                        <td>12.5</td>
-                                        <td>12.6</td>
-                                        <td>300</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">13</th>
-                                        <td>商务套间</td>
-                                        <td>马小姐</td>
-                                        <td>12.5</td>
-                                        <td>12.10</td>
-                                        <td>360</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">14</th>
-                                        <td>商务套间</td>
-                                        <td>马小姐</td>
-                                        <td>12.5</td>
-                                        <td>12.6</td>
-                                        <td>180</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">15</th>
-                                        <td>商务套间</td>
-                                        <td>马小姐</td>
-                                        <td>12.5</td>
-                                        <td>12.6</td>
-                                        <td>180</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">16</th>
-                                        <td>豪华套间</td>
-                                        <td>薛先生</td>
-                                        <td>12.5</td>
-                                        <td>12.8</td>
-                                        <td>600</td>
-                                        <td><!--<a href="javascript:void(0)" class="edit"></a>--></td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
+                                            <button class="btn btn-danger"><i class="fa fa-pencil"></i> Delete</button></td>--%>
+
                                 <nav class="pull-right">
                                     <ul class="pagination">
                                         <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -364,14 +327,13 @@
         </div>
 
         <div id="page-inner">
-            <footer><p>Copyright &copy; Xuezhongpo<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p></footer>
+            <footer><p>Copyright &copy; Xuezhongpo</p></footer>
         </div>
 
     </div>
 </div>
 <script src="${pageContext.request.contextPath }/assets/js/jquery-1.10.2.js"></script>
 <script src="${pageContext.request.contextPath }/assets/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath }/assets/js/editTable.js"></script>
 <script>
     $(function() {
 //$('.edit').handleTable({"cancel" : "<span class='glyphicon glyphicon-remove'></span>"});

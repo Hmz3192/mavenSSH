@@ -1,4 +1,4 @@
-<%--
+    <%--
   Created by IntelliJ IDEA.
   User: ThinKPad
   Date: 2018/1/5
@@ -116,10 +116,10 @@
                     <a href="#"><i class="glyphicon glyphicon-list-alt"></i><span class="fa arrow"></span> 客户管理</a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <s:a action="Back_toBook" namespace="/back">预定管理</s:a>
+                            <s:a action="User_getBookingUser" namespace="/back">预定管理</s:a>
                         </li>
                         <li>
-                            <s:a action="Back_toCustomer" namespace="/back">客户管理</s:a>
+                            <s:a action="User_getAllUser" namespace="/back">客户管理</s:a>
                         </li>
                         <li>
                             <s:a action="Back_tochart" namespace="/back">业务统计</s:a>
@@ -492,9 +492,9 @@
                     </div>
                 </div>
             </div>
-            <footer><p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-
-
+            <footer>
+                <p>Copyright &copy; 2018.Xue zhongpo
+                </p>
             </footer>
         </div>
         <!-- /. PAGE INNER  -->

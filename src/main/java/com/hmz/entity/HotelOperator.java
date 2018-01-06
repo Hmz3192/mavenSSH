@@ -9,7 +9,7 @@ public class HotelOperator {
     private String account;
     private String password;
     private Integer hotelId;
-    private String rankValue;
+    private int rankValue;
     private String phone;
     private String idCard;
 
@@ -54,12 +54,12 @@ public class HotelOperator {
     }
 
     @Basic
-    @Column(name = "rank_value", nullable = false, length = 1)
-    public String getRankValue() {
+    @Column(name = "rank_value", nullable = false)
+    public int getRankValue() {
         return rankValue;
     }
 
-    public void setRankValue(String rankValue) {
+    public void setRankValue(int rankValue) {
         this.rankValue = rankValue;
     }
 
@@ -91,10 +91,10 @@ public class HotelOperator {
         HotelOperator that = (HotelOperator) o;
 
         if (operateId != that.operateId) return false;
+        if (rankValue != that.rankValue) return false;
         if (account != null ? !account.equals(that.account) : that.account != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
         if (hotelId != null ? !hotelId.equals(that.hotelId) : that.hotelId != null) return false;
-        if (rankValue != null ? !rankValue.equals(that.rankValue) : that.rankValue != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (idCard != null ? !idCard.equals(that.idCard) : that.idCard != null) return false;
 
@@ -107,7 +107,7 @@ public class HotelOperator {
         result = 31 * result + (account != null ? account.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (hotelId != null ? hotelId.hashCode() : 0);
-        result = 31 * result + (rankValue != null ? rankValue.hashCode() : 0);
+        result = 31 * result + rankValue;
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
         return result;
