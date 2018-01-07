@@ -47,4 +47,11 @@ public class BackAction extends SuperAction{
 
         return "toAdminRoomType";
     }
+
+    //前往houtai
+    public String toBack() {
+
+        return "toBack";
+    }
+
 }

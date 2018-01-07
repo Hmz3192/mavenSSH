@@ -14,6 +14,10 @@ public class RoomServiceImpl implements RoomService {
     @Resource
     private RoomDao roomDao;
 
+    public HotelRoom findByNum(String num) {
+        return roomDao.findByNum(num);
+    }
+
     public List<HotelRoom> getAllRoom() {
         List<HotelRoom> allRoom = roomDao.getAllRoom();
         return allRoom;

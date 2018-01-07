@@ -14,4 +14,6 @@ public interface RoomDao {
     void delete(int roomId);
 
     public HotelRoom getOneRoom(Integer roomId);
+
+    HotelRoom findByNum(String num);
 }

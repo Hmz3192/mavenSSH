@@ -8,6 +8,7 @@ public class RoomKind {
     private int kindId;
     private String roomKind;
     private String introduction;
+    private String pic;
 
     @Id
     @Column(name = "kind_id", nullable = false)
@@ -39,6 +40,16 @@ public class RoomKind {
         this.introduction = introduction;
     }
 
+    @Basic
+    @Column(name = "pic", nullable = true, length = 255)
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -50,6 +61,7 @@ public class RoomKind {
         if (roomKind != null ? !roomKind.equals(roomKind1.roomKind) : roomKind1.roomKind != null) return false;
         if (introduction != null ? !introduction.equals(roomKind1.introduction) : roomKind1.introduction != null)
             return false;
+        if (pic != null ? !pic.equals(roomKind1.pic) : roomKind1.pic != null) return false;
 
         return true;
     }
@@ -59,6 +71,7 @@ public class RoomKind {
         int result = kindId;
         result = 31 * result + (roomKind != null ? roomKind.hashCode() : 0);
         result = 31 * result + (introduction != null ? introduction.hashCode() : 0);
+        result = 31 * result + (pic != null ? pic.hashCode() : 0);
         return result;
     }
 }

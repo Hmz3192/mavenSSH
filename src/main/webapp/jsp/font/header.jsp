@@ -26,15 +26,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <s:a href="Font_toIndex" namespace="/font" class="navbar-brand">Love&Peace 酒店官网</s:a>
+            <s:a href="Font_toIndex" namespace="/" class="navbar-brand">Love&Peace 酒店官网</s:a>
         </div>
         <!--小屏幕导航按钮和Logo-->
         <!--导航-->
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><s:a href="Font_toIndex" namespace="/font">首页</s:a></li>
-                <li><s:a href="Font_toIndex" namespace="/font">浏览</s:a></li>
-                <li><s:a href="Font_toIndex" namespace="/font">预定</s:a></li>
+                <li><s:a href="Font_toIndex" namespace="/">首页</s:a></li>
+                <li><s:a href="Font_toIndex" namespace="/">浏览</s:a></li>
+                <li><s:a href="Font_toIndex" namespace="/">预定</s:a></li>
                 <li><a href="#contact">联系我们</a></li>
             </ul>
         </div>

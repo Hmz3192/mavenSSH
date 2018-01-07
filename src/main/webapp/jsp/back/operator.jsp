@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="" name="description" />
     <meta content="webthemez" name="author" />
-    <title>BRILLIANT Free Bootstrap Admin Template</title>
+    <title>Love&Peace</title>
     <!-- Bootstrap Styles-->
     <link href="${pageContext.request.contextPath }/assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->
@@ -95,7 +95,7 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> 环境</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                    <li><a href="${pageContext.request.contextPath }/Back_toBack"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -148,65 +148,33 @@
                     <div class="panel-heading">入住登记</div>
                     <div class="panel-body">
                         <div class="col-md-6">
-                            <form>
+                            <form action="${pageContext.request.contextPath }/back/Live_liveIn.action" method="POST">
                                 <h5>名字</h5>
-                                <input type="text" value="">
+                                <input type="text" name="userName">
                                 <h5>预留电话</h5>
-                                <input type="text" value="">
-                                <h5>时间</h5>
-                                <input type="text" value="" class="time">
-                            </form>
+                                <input type="text" name="telephone">
+                                <h5>身份证号</h5>
+                                <input type="text" name="idCard" class="time">
+                                <h5>房间类别</h5>
+                                <select  name="type" >
+                                    <option>特色标间</option>
+                                    <option>精致大床房</option>
+                                    <option>个性大床房</option>
+                                    <option>商务套间</option>
+                                    <option>豪华套间</option>
+                                </select>
+                                <h5>房号</h5>
+                                <select  name="roomNum" >
+                                    <option>1-2</option>
+                                    <option>1-3</option>
+                                    <option>2-1</option>
+                                    <option>2-2</option>
+                                    <option>2-3</option>
+                                </select>
                         </div>
                         <div class="col-md-6">
-                            <form>
                                 <h5>入住</h5>
-                                <select class="arrival">
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                    <option>04</option>
-                                    <option>05</option>
-                                    <option>06</option>
-                                    <option>08</option>
-                                    <option>09</option>
-                                    <option>10</option>
-                                    <option>11</option>
-                                    <option>12</option>
-                                    <option>13</option>
-                                    <option>14</option>
-                                    <option>15</option>
-                                    <option>16</option>
-                                    <option>17</option>
-                                    <option>18</option>
-                                    <option>19</option>
-                                    <option>20</option>
-                                    <option>21</option>
-                                    <option>22</option>
-                                    <option>23</option>
-                                    <option>24</option>
-                                    <option>25</option>
-                                    <option>26</option>
-                                    <option>27</option>
-                                    <option>28</option>
-                                    <option>29</option>
-                                    <option>30</option>
-                                    <option>31</option>
-                                </select>
-                                <select class="arrival">
-                                    <option>Jan</option>
-                                    <option>Feb</option>
-                                    <option>Mar</option>
-                                    <option>Apr</option>
-                                    <option>May</option>
-                                    <option>June</option>
-                                    <option>July</option>
-                                    <option>Aug</option>
-                                    <option>Sep</option>
-                                    <option>Oct</option>
-                                    <option>Nov</option>
-                                    <option>Dec</option>
-                                </select>
-                                <select class="arrival">
+                                <select class="arrival" name="inYear">
                                     <option>2015</option>
                                     <option>2016</option>
                                     <option>2017</option>
@@ -214,14 +182,28 @@
                                     <option>2019</option>
                                     <option>2020</option>
                                 </select>
-                                <h5>退房</h5>
-                                <select class="arrival">
+                                <select class="arrival" name="inMon">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                                <select class="arrival" name="inDay">
                                     <option>01</option>
                                     <option>02</option>
                                     <option>03</option>
                                     <option>04</option>
                                     <option>05</option>
                                     <option>06</option>
+                                    <option>07</option>
                                     <option>08</option>
                                     <option>09</option>
                                     <option>10</option>
@@ -247,36 +229,19 @@
                                     <option>30</option>
                                     <option>31</option>
                                 </select>
-                                <select class="arrival">
-                                    <option>Jan</option>
-                                    <option>Feb</option>
-                                    <option>Mar</option>
-                                    <option>Apr</option>
-                                    <option>May</option>
-                                    <option>June</option>
-                                    <option>July</option>
-                                    <option>Aug</option>
-                                    <option>Sep</option>
-                                    <option>Oct</option>
-                                    <option>Nov</option>
-                                    <option>Dec</option>
-                                </select>
-                                <select class="arrival">
-                                    <option>2012</option>
-                                    <option>2013</option>
-                                    <option>2014</option>
-                                    <option>2015</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                </select>
+                                <h5>入住天数</h5>
+                                <input min="1" type="number" name="day"  >
                                 <h5 class="mem">人数</h5>
-                                <input min="1" type="number" id="quantity" name="quantity" value="1" class="form-control input-small">
+                                <input min="1" type="number" id="quantity" >
                                 <h5>备注</h5>
                                 <textarea value=""></textarea>
-                                <input type="submit" value="提交">
-                                <input type="reset" value="重置">
-                            </form>
                         </div>
+                            <%--<submit cssClass="btn btn-primary" >入住</submit>--%>
+                            <input type="submit"  style="margin-left: 20px" class="btn btn-primary" value="入住">
+                            <%--<button class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit "></i> 结账</button>--%>
+                            </form>
+
+
                     </div>
                 </div>
             </div>
@@ -285,9 +250,9 @@
                     <div class="panel-heading">结账</div>
                     <div class="panel-body">
                         <div class="col-md-6">
-                            <form>
+                            <form action="${pageContext.request.contextPath }/back/Live_liveOut.action" method="post">
                                 <h5>名字</h5>
-                                <input type="text" value="">
+                                <input type="text" name="userName">
                                 <h5>房间号</h5>
                                 <select class="arrival">
                                     <option>101</option>
@@ -336,112 +301,9 @@
                                     <option>180</option>
                                     <option>200</option>
                                 </select>
-                            </form>
                         </div>
                         <div class="col-md-6">
-                            <form>
-                                <h5>入住</h5>
-                                <select class="arrival">
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                    <option>04</option>
-                                    <option>05</option>
-                                    <option>06</option>
-                                    <option>08</option>
-                                    <option>09</option>
-                                    <option>10</option>
-                                    <option>11</option>
-                                    <option>12</option>
-                                    <option>13</option>
-                                    <option>14</option>
-                                    <option>15</option>
-                                    <option>16</option>
-                                    <option>17</option>
-                                    <option>18</option>
-                                    <option>19</option>
-                                    <option>20</option>
-                                    <option>21</option>
-                                    <option>22</option>
-                                    <option>23</option>
-                                    <option>24</option>
-                                    <option>25</option>
-                                    <option>26</option>
-                                    <option>27</option>
-                                    <option>28</option>
-                                    <option>29</option>
-                                    <option>30</option>
-                                    <option>31</option>
-                                </select>
-                                <select class="arrival">
-                                    <option>Jan</option>
-                                    <option>Feb</option>
-                                    <option>Mar</option>
-                                    <option>Apr</option>
-                                    <option>May</option>
-                                    <option>June</option>
-                                    <option>July</option>
-                                    <option>Aug</option>
-                                    <option>Sep</option>
-                                    <option>Oct</option>
-                                    <option>Nov</option>
-                                    <option>Dec</option>
-                                </select>
-                                <select class="arrival">
-                                    <option>2015</option>
-                                    <option>2016</option>
-                                    <option>2017</option>
-                                    <option>2018</option>
-                                    <option>2019</option>
-                                    <option>2020</option>
-                                </select>
-                                <h5>退房</h5>
-                                <select class="arrival">
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                    <option>04</option>
-                                    <option>05</option>
-                                    <option>06</option>
-                                    <option>08</option>
-                                    <option>09</option>
-                                    <option>10</option>
-                                    <option>11</option>
-                                    <option>12</option>
-                                    <option>13</option>
-                                    <option>14</option>
-                                    <option>15</option>
-                                    <option>16</option>
-                                    <option>17</option>
-                                    <option>18</option>
-                                    <option>19</option>
-                                    <option>20</option>
-                                    <option>21</option>
-                                    <option>22</option>
-                                    <option>23</option>
-                                    <option>24</option>
-                                    <option>25</option>
-                                    <option>26</option>
-                                    <option>27</option>
-                                    <option>28</option>
-                                    <option>29</option>
-                                    <option>30</option>
-                                    <option>31</option>
-                                </select>
-                                <select class="arrival">
-                                    <option>Jan</option>
-                                    <option>Feb</option>
-                                    <option>Mar</option>
-                                    <option>Apr</option>
-                                    <option>May</option>
-                                    <option>June</option>
-                                    <option>July</option>
-                                    <option>Aug</option>
-                                    <option>Sep</option>
-                                    <option>Oct</option>
-                                    <option>Nov</option>
-                                    <option>Dec</option>
-                                </select>
+                                <h5>离开日期</h5>
                                 <select class="arrival">
                                     <option>2012</option>
                                     <option>2013</option>
@@ -449,45 +311,63 @@
                                     <option>2015</option>
                                     <option>2016</option>
                                     <option>2017</option>
+                                    <option>2018</option>
+                                    <option>2019</option>
+                                    <option>2020</option>
                                 </select>
-                                <h5 class="mem">人数</h5>
-                                <input min="1" type="number" id="quantity1" name="quantity" value="1" class="form-control input-small">
-                                <h5>总计</h5>
-                                <textarea value=""></textarea>
-                            </form>
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit "></i> 结账</button>
+                                <select class="arrival">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
 
+                                <select class="arrival">
+                                    <option>01</option>
+                                    <option>02</option>
+                                    <option>03</option>
+                                    <option>04</option>
+                                    <option>05</option>
+                                    <option>06</option>
+                                    <option>07</option>
+                                    <option>08</option>
+                                    <option>09</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                    <option>16</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>19</option>
+                                    <option>20</option>
+                                    <option>21</option>
+                                    <option>22</option>
+                                    <option>23</option>
+                                    <option>24</option>
+                                    <option>25</option>
+                                    <option>26</option>
+                                    <option>27</option>
+                                    <option>28</option>
+                                    <option>29</option>
+                                    <option>30</option>
+                                    <option>31</option>
+                                </select>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <!--Model-->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">结账</h4>
-                        </div>
-                        <div class="modal-body">
-                            <form action="#">
-                                <div class="form-group">
-                                    <label for="addname">名字</label>
-                                    <input type="text" id="addname" class="form-control" value="胡先生">
-                                </div>
-                                <div class="form-group">
-                                    <label for="addzhonglei">房间号</label>
-                                    <input type="text" id="addzhonglei" class="form-control" value="401">
-                                </div>
-                                <div class="form-group">
-                                    <label for="addtotal">总计</label>
-                                    <input type="text" id="addtotal" class="form-control" value="400">
-                                </div>
+                            <input type="submit" style="margin-top: 10px;margin-left: 10px" class="btn btn-primary" value="结账">
                             </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                            <button type="button" class="btn btn-primary">提交</button>
+                            <%--<button class="btn btn-primary" style="margin-top: 10px" data-toggle="modal" data-target="#myModal"><i class="fa fa-edit "></i> 结账</button>--%>
+
                         </div>
                     </div>
                 </div>

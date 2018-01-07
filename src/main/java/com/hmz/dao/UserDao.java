@@ -21,4 +21,6 @@ public interface UserDao {
     public User queryOne(Integer id);
 
     public void updateOne(User user);
+
+    User findAndAdd(User user);
 }

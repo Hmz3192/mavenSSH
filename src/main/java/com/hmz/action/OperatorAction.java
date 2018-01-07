@@ -17,14 +17,6 @@ public class OperatorAction extends SuperAction implements ModelDriven<HotelOper
 
     private HotelOperator hotelOperator = new HotelOperator();
 
-    public String login() {
-        boolean login = operatorService.operatorLogin(hotelOperator);
-        if (login) {
-            return "operatorLoginSuccess";
-        }
-        else
-            return "operatorLoginFail";
-    }
 
     public String queryOperator() {
         List<HotelOperator> hotelOperators = operatorService.queryAll();
@@ -41,6 +33,8 @@ public class OperatorAction extends SuperAction implements ModelDriven<HotelOper
         operatorService.addOperator(hotelOperator);
         return "addOperatorSuccess";
     }
+
+
     public HotelOperator getModel() {
         return hotelOperator;
     }

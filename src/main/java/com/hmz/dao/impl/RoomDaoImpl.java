@@ -2,8 +2,6 @@ package com.hmz.dao.impl;
 
 import com.hmz.dao.RoomDao;
 import com.hmz.entity.HotelRoom;
-import com.hmz.entity.RoomKind;
-import com.hmz.entity.User;
 import com.hmz.util.MyHibaernateTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -31,6 +29,12 @@ public class RoomDaoImpl extends MyHibaernateTemplate implements RoomDao {
         HotelRoom hotelRoom = rooms.get(0);
         return hotelRoom;
 
+    }
+
+    public HotelRoom findByNum(String num) {
+        List<HotelRoom> rooms = (List<HotelRoom>) this.template.find("from HotelRoom u where u.location = ?", num);
+        HotelRoom hotelRoom = rooms.get(0);
+        return hotelRoom;
     }
 
 }

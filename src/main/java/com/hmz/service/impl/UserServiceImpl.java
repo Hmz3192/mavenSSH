@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
         userDao.updateOne(user);
 
     }
+
+    public User findAndAdd(User user) {
+        User andAdd = userDao.findAndAdd(user);
+        return andAdd;
+    }
 }

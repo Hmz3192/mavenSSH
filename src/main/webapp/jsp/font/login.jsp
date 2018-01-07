@@ -29,7 +29,7 @@
             </ul>
 
             <div class="loginDiv">
-                <s:form action="User_Userlogin" namespace="/font" method="post">
+                <s:form action="User_Userlogin" namespace="/" method="post">
                     <p class="loginTel">
                         <input type="text" placeholder="请输入账号" width="100px"  name="account"/>
                     </p>
@@ -52,7 +52,7 @@
             </div>
             <!--注册-->
             <div class="registerDiv" style="display: none;">
-                <s:form action="User_addUser" namespace="/font"  method="post">
+                <s:form action="User_addUser" namespace="/"  method="post">
                     <div id="errorRegister"></div>
                     <p class="loginTel" >
                         <input type="text" placeholder="请输入账号" id="registerUserName" name="account"/>

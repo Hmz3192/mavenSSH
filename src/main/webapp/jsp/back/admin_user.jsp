@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="" name="description" />
     <meta content="webthemez" name="author" />
-    <title>Bootstrap HTML5 Admin Template</title>
+    <title>Love&Peace</title>
     <!-- Bootstrap Styles-->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/bootstrap.min.css" type="text/css">
     <!-- FontAwesome Styles-->
@@ -89,7 +89,7 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> 环境</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                    <li><a href="${pageContext.request.contextPath }/Back_toBack"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -189,8 +189,8 @@
                                             <td>已验证未验证</td>
                                         </s:else>
                                         <td><s:property value="#Operators.phone"/></td>
-                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
-                                            <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/Operator_delete?operateId=<s:property value="#Operators.operateId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> Delete</a></button></td>
+                                        <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> 授权</button>
+                                            <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/Operator_delete?operateId=<s:property value="#Operators.operateId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> 删除</a></button></td>
                                     </tr>
                                     </s:iterator>
 

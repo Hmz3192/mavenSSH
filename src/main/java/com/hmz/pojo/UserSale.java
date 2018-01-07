@@ -1,6 +1,8 @@
 package com.hmz.pojo;
 
-public class UserSale {
+import java.io.Serializable;
+
+public class UserSale implements Serializable{
 
     private Integer id;
     private String name;

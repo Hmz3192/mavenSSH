@@ -13,4 +13,7 @@ public interface RoomTypeService {
     public void delete(int roomId);
 
     public RoomKind getOneByRoomId(Integer kindId);
+
+    RoomKind findByType(String type);
+
 }

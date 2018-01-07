@@ -14,4 +14,6 @@ public interface RoomTypeDao {
 
     RoomKind getOneByKind(Integer kindId);
 
+    RoomKind findByType(String type);
+
 }
