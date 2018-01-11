@@ -31,7 +31,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <s:a href="Font_toIndex" namespace="/font" class="navbar-brand">Love&Peace 酒店官网</s:a>
+            <s:a href="Font_toIndex" namespace="/" class="navbar-brand">Love&Peace 酒店官网</s:a>
         </div>
 
         <!--小屏幕导航按钮和Logo-->
@@ -58,17 +58,18 @@
                         <s:if test="#session.user == null">
                         <li>
                             <%--<a href="login.html">&nbsp;&nbsp;<strong>登录</strong></a>--%>
-                            <s:a namespace="/font" action="Font_toLogin">登录</s:a>
+                            <s:a namespace="/" action="Font_toLogin">登录</s:a>
                         </li>
                         </s:if>
                         <s:else>
                         <%--<li class="divider"></li>--%>
                         <li>
-                            <a href="login.html">&nbsp;&nbsp;<strong>修改信息</strong></a>
+                            <%--<a href="login.html">&nbsp;&nbsp;<strong>修改信息</strong></a>--%>
+                            <s:a action="Font_toUser"  namespace="/">修改信息</s:a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <s:a href="User_out" namespace="/font">&nbsp;&nbsp;<strong>退出</strong></s:a>
+                            <s:a href="User_out" namespace="/">&nbsp;&nbsp;<strong>退出</strong></s:a>
                         </li>
                         </s:else>
                     </ul>
@@ -149,28 +150,42 @@
                 <h2>客房预订</h2>
             </div>
             <div class="col-md-4">
-                <div class="course">
-                    <img src="${pageContext.request.contextPath }/assets/img/1.png" class="img-responsive" alt=""/>
+                <s:if test='#session.order !=null || #session.order.size() != 0'>
+                    <div class="course" >
+                    </s:if>
+                         <s:else>
+                        <div class="course">
+                        </s:else>
+
+                    <img src="${pageContext.request.contextPath }/assets/img/1.png"  style="margin-left: 20px" class="img-responsive" alt=""/>
                     <%--<a href="order.html" class="btn btn-primary" target="_blank" role="button">--%>
-                        <s:a action="Font_toList" class="btn btn-primary" namespace="/font">预定客房</s:a>
-                    </a>
+                        <s:a action="Room_getAllRoomInFont"  class="btn btn-primary" cssStyle="margin-left: 20px" namespace="/">预定客房</s:a>
                 </div>
             </div>
+                    <div class="col-md-4">
+                    <s:if test='#session.order !=null || #session.order.size() != 0'>
+                        <div class="course" style="margin-left: 50px">
+                    </s:if>
+                     <s:else>
+                        <div class="course">
+                    </s:else>
+
+                    <img src="${pageContext.request.contextPath }/assets/img/2.png"  style="margin-left: 20px" class="img-responsive" alt=""/>
+                    <s:a action="Font_toUser" class="btn btn-primary" cssStyle="margin-left: 20px" namespace="/">修改信息</s:a>
+                </div>
+            </div>
+
+
+            <s:if test="#session.order !=null || #session.order.size() != 0">
             <div class="col-md-4">
-                <div class="course">
-                    <img src="${pageContext.request.contextPath }/assets/img/2.png" class="img-responsive" alt=""/>
-                    <s:a action="Font_toUser" class="btn btn-primary" namespace="/font">修改信息</s:a>
+                <div class="course" style="margin-left: 100px">
+                    <img src="${pageContext.request.contextPath }/assets/img/3.png"  style="margin-left:20px" class="img-responsive" alt=""/>
+                    <s:a class="btn btn-primary"  role="button" action="Live_deleteBooking"  cssStyle="margin-left: 20px" namespace="/" onclick="javascript: return confirm('真的要删除吗？');">
+                        清除预定
+                    </s:a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="course">
-                    <img src="${pageContext.request.contextPath }/assets/img/3.png" class="img-responsive" alt=""/>
-                    <a class="btn btn-primary" target="_blank" role="button" data-toggle="modal"
-                       data-target="#myModal1">
-                        删除预定
-                    </a>
-                </div>
-            </div>
+            </s:if>
         </div>
     </div>
 </section>
@@ -284,16 +299,16 @@
 <script src="${pageContext.request.contextPath }/assets/js/jquery.singlePageNav.min.js"></script>
 <script src="${pageContext.request.contextPath }/assets/js/wow.min.js"></script>
 <script>
-  /*  $(function () {
-        $('.nav').singlePageNav({
+    $(function () {
+      /*  $('.nav').singlePageNav({
             offset: 70
-        });
-        /!*小屏幕导航点击关闭菜单*!/
+        });*/
+//        小屏幕导航点击关闭菜单
         $('.navbar-collapse a').click(function () {
             $('.navbar-collapse').collapse('hide');
         });
         new WOW().init();
-    })*/
+    })
 </script>
 </body>
 </html>

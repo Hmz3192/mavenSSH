@@ -83,15 +83,15 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <s:a href="Font_toIndex" namespace="/font" class="navbar-brand">Love&Peace 酒店官网</s:a>
+                        <s:a href="Font_toIndex" namespace="/" class="navbar-brand">Love&Peace 酒店官网</s:a>
                     </div>
                     <!--小屏幕导航按钮和Logo-->
                     <!--导航-->
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><s:a href="Font_toIndex" namespace="/font">首页</s:a></li>
-                            <li><s:a href="Font_toIndex" namespace="/font">浏览</s:a></li>
-                            <li><s:a href="Font_toIndex" namespace="/font">预定</s:a></li>
+                            <li><s:a href="Font_toIndex" namespace="/">首页</s:a></li>
+                            <li><s:a href="Font_toIndex" namespace="/">浏览</s:a></li>
+                            <li><s:a href="Font_toIndex" namespace="/">预定</s:a></li>
                             <li><a href="#contact">联系我们</a></li>
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -109,17 +109,18 @@
                                     <s:if test="#session.user == null">
                                         <li>
                                                 <%--<a href="login.html">&nbsp;&nbsp;<strong>登录</strong></a>--%>
-                                            <s:a namespace="/font" action="Font_toLogin">登录</s:a>
+                                            <s:a namespace="/" action="Font_toLogin">登录</s:a>
                                         </li>
                                     </s:if>
                                     <s:else>
                                         <%--<li class="divider"></li>--%>
                                         <li>
-                                            <a href="login.html">&nbsp;&nbsp;<strong>修改信息</strong></a>
+                                            <%--<a href="login.html">&nbsp;&nbsp;<strong>修改信息</strong></a>--%>
+                                                <s:a action="Font_toUser" namespace="/">修改信息</s:a>
                                         </li>
                                         <li class="divider"></li>
                                         <li>
-                                            <s:a href="User_out" namespace="/font">&nbsp;&nbsp;<strong>退出</strong></s:a>
+                                            <s:a href="User_out" namespace="/">&nbsp;&nbsp;<strong>退出</strong></s:a>
 
                                         </li>
                                     </s:else>
@@ -140,19 +141,28 @@
         <div id="fh5co-hotel-section">
             <div class="container">
                 <div class="row">
+
+
+                    <s:if test="#session.roomSales == null || #session.roomSales.size() == 0">
+                    没有任何信息
+                     </s:if>
+                    <s:else>
+                    <s:iterator value="#session.roomSales" var="room">
                     <div class="col-md-4">
                         <div class="hotel-content">
-                            <div class="hotel-grid" style="background-image: url(${pageContext.request.contextPath }/assets/img/image-1.jpg);">
-                                <div class="price"><small>折扣价</small><span>¥120/晚</span></div>
+                            <div class="hotel-grid" style="background-image: url('<s:property value="#room.url"/>')">
+                                <div class="price"><small>折扣价</small><span>¥<s:property value="#room.price"/>/晚</span></div>
                                 <a class="book-now text-center btn btn-primary " href="#"data-toggle="modal" data-target="#myModal1"><i class="ti-calendar"></i> 现在预定</a>
                             </div>
                             <div class="desc">
-                                <h3><a href="#">特色标间</a></h3>
-                                <p>Love&Peace酒店让每位客人都能享受到安静的休憩空间。房间内32寸液晶电视、品牌空调、网络数字电视信号、电信专线光纤宽带、酒店WiFi全覆盖。24小时淋浴服务等一应俱全。</p>
+                                <h3><a href="#"><s:property value="#room.name"/></a></h3>
+                                <p><s:property value="#room.introduction"/></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    </s:iterator>
+                    </s:else>
+                 <%--   <div class="col-md-4">
                         <div class="hotel-content">
                             <div class="hotel-grid" style="background-image: url(${pageContext.request.contextPath }/assets/img/image-2.jpg);">
                                 <div class="price"><small>折扣价</small><span>¥150/晚</span></div>
@@ -200,7 +210,7 @@
                             </div>
                         </div>
                     </div>
-
+--%>
 
                 </div>
             </div>
@@ -214,32 +224,43 @@
                         <h4 class="modal-title" id="myModalLabel1">预定房间</h4>
                     </div>
                     <div class="modal-body">
-                        <form action="#">
+                        <form action="${pageContext.request.contextPath }/Live_bookRoom" method="post">
                             <div class="form-group">
                                 <label for="addname1">姓名</label>
-                                <input type="text" id="addname1" class="form-control" placeholder="姓名">
+                                <input type="text" id="addname1" name="userName" class="form-control" value='<s:property value="#session.user.account"/>'>
                             </div>
                             <div class="form-group">
                                 <label for="addpassword">电话</label>
-                                <input type="text" id="addpassword" class="form-control" placeholder="请输入电话">
+                                <input type="text" id="addpassword"  name="telephone" class="form-control" value='<s:property value="#session.user.phone"/>'>
                             </div>
                             <div class="form-group">
                                 <label for="adddate">预定日期</label>
-                                <select id="adddate2" class="form-control">
-                                    <option>Jan</option>
-                                    <option>Feb</option>
-                                    <option>Mar</option>
-                                    <option>Apr</option>
-                                    <option>May</option>
-                                    <option>June</option>
-                                    <option>July</option>
-                                    <option>Aug</option>
-                                    <option>Sep</option>
-                                    <option>Oct</option>
-                                    <option>Nov</option>
-                                    <option>Dec</option>
+                                <select id="year" name="inYear" class="form-control">
+                                        <option>2012</option>
+                                        <option>2013</option>
+                                        <option>2014</option>
+                                        <option>2015</option>
+                                        <option>2016</option>
+                                        <option>2017</option>
+                                        <option>2018</option>
+                                        <option>2019</option>
+                                        <option>2020</option>
                                 </select>
-                                <select id="adddate" class="form-control">
+                                <select id="adddate2" name="inMon" class="form-control">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                                <select id="adddate" name="inDay"  class="form-control">
                                     <option>01</option>
                                     <option>02</option>
                                     <option>03</option>
@@ -274,11 +295,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="addemail">预定天数</label>
-                                <input type="email" id="addemail" class="form-control" placeholder="请输入预定天数">
+                                <input type="number" id="addemail"  name="day" class="form-control" placeholder="请输入预定天数">
                             </div>
                             <div class="form-group">
                                 <label for="addyonghuzu">预定房型</label>
-                                <select id="addyonghuzu" class="form-control">
+                                <select id="addyonghuzu" name="type" class="form-control">
                                     <option>特色标间</option>
                                     <option>精致大床房</option>
                                     <option>个性大床房</option>
@@ -286,12 +307,13 @@
                                     <option>豪华套间</option>
                                 </select>
                             </div>
-                        </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                        <button type="button" class="btn btn-primary">提交</button>
+                        <%--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>--%>
+                        <%--<button type="button" class="btn btn-primary">提交</button>--%>
+                        <input type="submit" class="btn btn-primary">
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -355,10 +377,8 @@
         <!--contact-->
     </div>
     <!-- END fh5co-page -->
-
 </div>
 <!-- END fh5co-wrapper -->
-
 <!-- Javascripts -->
 <script src="${pageContext.request.contextPath }/assets/js/jquery-2.1.4.min.js"></script>
 <!-- Dropdown Menu -->

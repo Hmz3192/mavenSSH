@@ -2,7 +2,6 @@ package com.hmz.dao.impl;
 
 import com.hmz.dao.RoomTypeDao;
 import com.hmz.entity.RoomKind;
-import com.hmz.entity.User;
 import com.hmz.util.MyHibaernateTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -32,5 +31,12 @@ public class RoomTypeDaoImpl extends MyHibaernateTemplate implements RoomTypeDao
         return user;
 
     }
+
+    public RoomKind findByType(String type) {
+        List<RoomKind> userList = (List<RoomKind>) this.template.find("from RoomKind u where u.roomKind = ?", type);
+        RoomKind user = userList.get(0);
+        return user;
+    }
+
 
 }

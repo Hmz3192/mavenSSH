@@ -7,7 +7,7 @@
     <package name="default" extends="struts-default" namespace="/">
         <default-action-ref name="default"/>
         <action name="default">
-            <result>/jsp/back/login.jsp</result>
+            <result>/jsp/font/index.jsp</result>
         </action>
     </package>
 
@@ -17,9 +17,10 @@
             <result name="operatorLoginSuccess" >/jsp/back/operator.jsp</result>
             <result name="operatorLoginFail" >/index.jsp</result>
 
+
             <!--管理员登录成功并跳转到类型页面-->
             <result name="adminLoginSuccess" type="chain">RoomType_getAllType</result>
-            <result name="adminLoginFail" >/jsp/back/login.jsp</result>
+            <result name="adminLoginFail" >/index.jsp</result>
             <result name="getAdminRoom" type="chain">Back_toAdminRoom</result>
             <result name="addTypeSuccess" type="chain">RoomType_getAllType</result>
             <result name="typeDeleteSuccess" type="chain">RoomType_getAllType</result>
@@ -33,6 +34,9 @@
             <!--操作员管理-->
             <result name="getUserSales" type="chain">Back_toCustomer</result>
             <result name="getBookUser" type="chain">Back_toBook</result>
+            <result name="outSuccess" type="chain">User_getAllUser</result>
+            <result name="liveInSuccess" type="chain">User_getAllUser</result>
+            <result name="finishBook" type="chain">User_getAllUser</result>
 
 
             <result name="toAdminRoomType">/jsp/back/admin_roomType.jsp</result>
@@ -42,13 +46,14 @@
             <result name="toBook" >/jsp/back/book.jsp</result>
             <result name="toCustomer" >/jsp/back/customer.jsp</result>
             <result name="tochart" >/jsp/back/chart.jsp</result>
-            <result name="toAdminLogin" >/jsp/back/login.jsp</result>
+            <result name="toAdminLogin" >/index.jsp</result>
 
         </action>
     </package>
 
-    <package name="font" extends="struts-default" namespace="/font" strict-method-invocation="false">
+    <package name="font" extends="struts-default" namespace="/" strict-method-invocation="false">
         <action name="*_*" class="com.hmz.action.{1}Action" method="{2}">
+            <result name="toBack" >/index.jsp</result>
             <result name="toIndex" >/jsp/font/index.jsp</result>
             <result name="toList" >/jsp/font/list.jsp</result>
             <result name="toUser" >/jsp/font/user.jsp</result>
@@ -56,9 +61,12 @@
             <result name="userLoginSuccess" >/jsp/font/index.jsp</result>
             <result name="add_success" >/jsp/font/index.jsp</result>
             <result name="user_out" >/jsp/font/index.jsp</result>
-
-
+            <result name="getFontRoomSuccess">/jsp/font/list.jsp</result>
+            <result name="updateUserSuccess">/jsp/font/index.jsp</result>
+            <result name="BookSuccess">/jsp/font/index.jsp</result>
+            <result name="deleteSuccess">/jsp/font/index.jsp</result>
         </action>
+
     </package>
 
     <!-- 商品相关请求转发 -->

@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="" name="description" />
     <meta content="webthemez" name="author" />
-    <title>Bootstrap HTML5 Admin Template</title>
+    <title>Love&Peace</title>
     <!-- Bootstrap Styles-->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/bootstrap.min.css" type="text/css">
     <!-- FontAwesome Styles-->
@@ -89,7 +89,7 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> 环境</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                    <li><a href="${pageContext.request.contextPath }/Back_toBack"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -126,7 +126,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li>
-                    <a href="" role="button" data-toggle="modal" data-target="#myModal">添加房间</a>
+                    <a href="" role="button" data-toggle="modal" data-target="#add">添加房间</a>
                 </li>
             </ol>
             <div class="row">
@@ -160,8 +160,8 @@
                                                     <td><s:property value="#room.location"/></td>
                                                     <td><s:property value="#room.price"/></td>
                                                     <td>未使用</td>
-                                                    <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
-                                                        <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/Room_delete?roomId=<s:property value="#room.roomId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> Delete</a></button></td>
+                                                    <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> 编辑</button>
+                                                        <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/Room_delete?roomId=<s:property value="#room.roomId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> 删除</a></button></td>
                                                 </tr>
                                             </s:if>
                                         <s:if test="#room.usingState == 1">
@@ -171,8 +171,8 @@
                                                 <td><s:property value="#room.location"/></td>
                                                 <td><s:property value="#room.price"/></td>
                                                 <td>已预订</td>
-                                                <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
-                                                    <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/Room_delete?roomId=<s:property value="#room.roomId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> Delete</a></button></td>
+                                                <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> 编辑</button>
+                                                    <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/Room_delete?roomId=<s:property value="#room.roomId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> 删除</a></button></td>
                                             </tr>
                                         </s:if>
                                         <s:if test="#room.usingState == 2">
@@ -182,8 +182,8 @@
                                                 <td><s:property value="#room.location"/></td>
                                                 <td><s:property value="#room.price"/></td>
                                                 <td>使用中</td>
-                                                <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> Edit</button>
-                                                    <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/Room_delete?roomId=<s:property value="#room.roomId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> Delete</a></button></td>
+                                                <td> <button class="btn btn-primary" data-toggle="modal" data-target="#myModal4"><i class="fa fa-edit "></i> 编辑</button>
+                                                    <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/Room_delete?roomId=<s:property value="#room.roomId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> 删除</a></button></td>
                                             </tr>
                                         </s:if>
                                     </s:iterator>
@@ -249,7 +249,7 @@
 
         <!-- Model -->
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -270,11 +270,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="location">房号</label>
-                                <input type="text" id="location" name="location" class="form-control" placeholder="请输入价格">
+                                <input type="text" id="location"  value="1-3" name="location" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label for="price">价格</label>
-                                <input type="text" id="price" name="price" class="form-control" placeholder="请输入价格">
+                                <input type="text" id="price" name="price" value="89.0" class="form-control" placeholder="请输入价格">
                             </div>
 
                     </div>
@@ -285,6 +285,8 @@
                 </div>
             </div>
         </div>
+
+
 
         <div id="page-inner">
             <footer><p>Copyright &copy; Xuezhongpo</p></footer>

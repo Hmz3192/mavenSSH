@@ -22,5 +22,7 @@ public interface  UserService {
 
     public void updateOne(User user);
 
+    public User findAndAdd(User user);
+
 
 }

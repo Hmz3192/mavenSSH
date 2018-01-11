@@ -30,4 +30,11 @@ public class RoomTypeServiceImpl implements RoomTypeService{
     public RoomKind getOneByRoomId(Integer kindId) {
         return roomTypeDao.getOneByKind(kindId);
     }
+
+    public RoomKind findByType(String type) {
+        return roomTypeDao.findByType(type);
+
+    }
+
+
 }

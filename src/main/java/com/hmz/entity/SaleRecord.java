@@ -151,4 +151,5 @@ public class SaleRecord {
         result = 31 * result + (moneyState != null ? moneyState.hashCode() : 0);
         return result;
     }
+
 }

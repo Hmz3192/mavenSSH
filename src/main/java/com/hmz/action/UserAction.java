@@ -13,13 +13,11 @@ import com.hmz.service.UserService;
 import com.hmz.util.SuperAction;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ModelDriven;
-import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.Scope;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,7 +40,12 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
     public String Userlogin() {
         boolean login = userService.login(user);
         if (login) {
-            SuperAction.getContextInstance().getSession().put("user",user);
+            User user1 = userService.findAndAdd(user);
+            SaleRecord one = saleRecordService.getOne(user1.getUserId());
+            if (one.getStartTime() != null && !one.getStartTime().equals("")) {
+                SuperAction.getContextInstance().getSession().put("order", "true");
+            }
+            SuperAction.getContextInstance().getSession().put("user", user1);
             return "userLoginSuccess";
         }
         else
@@ -50,9 +53,10 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
     }
 
     public String addUser() {
-        SuperAction.getContextInstance().getSession().put("user",user);
         user.setVip(0);
         userService.add(user);
+        User andAdd = userService.findAndAdd(user);
+        SuperAction.getContextInstance().getSession().put("user",andAdd);
         return "add_success";
     }
 
@@ -89,31 +93,60 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
         for (User user : users) {
             UserSale userSale = new UserSale();
             SaleRecord one = saleRecordService.getOne(user.getUserId());
-            if (one.getEndTime() != null || one.getEndTime() == "") {
-                HotelRoom room = roomService.getOne(one.getRoomId());
+            if (one.getEndTime() != null && !one.getEndTime().equals("")) {
+                Integer outDay = Integer.valueOf(one.getEndTime().substring(one.getEndTime().length() - 2, one.getEndTime().length()));
+                Integer inDay = Integer.valueOf(one.getStartTime().substring(one.getStartTime().length() - 2, one.getStartTime().length()));
+                Integer day = outDay - inDay;
+                if (one.getRoomId() == null || one.getRoomId().equals(0)) {
+                    userSale.setMoney("按房间分配");
+                    userSale.setRoomLocation("暂无");
+                    RoomKind oneByRoomId = roomTypeService.getOneByRoomId(one.getHotelId());
+                    userSale.setType(oneByRoomId.getRoomKind());
+
+                } else {
+                    HotelRoom room = roomService.getOne(one.getRoomId());
+                    userSale.setMoney(String.valueOf(room.getPrice() * day));
+                    userSale.setRoomLocation(room.getLocation());
+                    userSale.setType(room.getRoomKind());
+                }
                 userSale.setId(user.getUserId());
                 userSale.setInDay(one.getStartTime());
                 userSale.setOutDay(one.getEndTime());
-                Integer outDay = Integer.valueOf(one.getEndTime().substring(one.getEndTime().length()-2,one.getEndTime().length()));;
-                Integer inDay = Integer.valueOf(one.getStartTime().substring(one.getStartTime().length()-2,one.getStartTime().length()));;
-                System.out.println(outDay + "-" + inDay);
-                Integer day = outDay - inDay;
-                System.out.println(day + "");
-                userSale.setMoney(String.valueOf(room.getPrice() * day));
+
+//                System.out.println(outDay + "-" + inDay);
+//                System.out.println(day + "");
                 userSale.setName(user.getAccount());
-                userSale.setRoomLocation(room.getLocation());
-                userSale.setType(room.getRoomKind());
                 userSale.setVip(user.getVip());
                 userSale.setMonenyState(one.getMoneyState());
                 userSale.setLiveState(one.getOperateKind());
-                userSales.add(userSale);
-            } else break;
+                    userSales.add(userSale);
+
+
+            } else continue;
+
         }
         //往request里放attribute
 //        context.put("userList",userList);
         //往session里放
         SuperAction.getContextInstance().getSession().put("userSales",userSales);
         return "getUserSales";
+    }
+
+    //更新预定信息
+    public String update() {
+        User user2 = (User) SuperAction.getContextInstance().getSession().get("user");
+        User oldAdd = userService.findAndAdd(user2);
+        User newOne = new User();
+        newOne.setPhone(user.getPhone());
+        newOne.setAccount(user.getAccount());
+        newOne.setVip(oldAdd.getVip());
+        newOne.setPassword(oldAdd.getPassword());
+        newOne.setIdCard(oldAdd.getIdCard());
+        newOne.setUserId(oldAdd.getUserId());
+        userService.updateOne(newOne);
+        SuperAction.getContextInstance().getSession().remove("user");
+        SuperAction.getContextInstance().getSession().put("user", newOne);
+        return "updateUserSuccess";
     }
 
 
@@ -176,10 +209,7 @@ public class UserAction extends SuperAction implements ModelDriven<User>{
         session.setAttribute("user", user);
         return "edit_success";
     }
-    public String update() {
-        userService.updateOne(user);
-        return "update_success";
-    }
+
 
 
     public User getModel() {

@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta content="" name="description" />
     <meta content="webthemez" name="author" />
-    <title>Bootstrap HTML5 Admin Template</title>
+    <title>Love&Peace</title>
     <!-- Bootstrap Styles-->
     <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/bootstrap.min.css" type="text/css">
     <!-- FontAwesome Styles-->
@@ -89,7 +89,7 @@
                     <li><a href="#"><i class="fa fa-gear fa-fw"></i> 环境</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
+                    <li><a href="${pageContext.request.contextPath }/Back_toBack"><i class="fa fa-sign-out fa-fw"></i> 退出</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -169,9 +169,9 @@
                                         <td> <s:property value="#type.kindId"/></td>
                                         <td><s:property value="#type.roomKind"/></td>
                                         <td><s:property value="#type.introduction"/></td>
-                                        <td> <button  data-toggle="modal" data-target="#edit" onclick="edit(<s:property value="#type"/>)">
-                                        <i class="fa fa-edit "></i> Edit</button>
-                                            <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/RoomType_delete?kindId=<s:property value="#type.kindId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> Delete</a></button></td>
+                                        <td> <button  class="btn btn-primary" data-toggle="modal" data-target="#edit" onclick="edit(<s:property value="#type"/>)">
+                                        <i class="fa fa-edit "></i> 编辑</button>
+                                            <button class="btn btn-danger"><a href='${pageContext.request.contextPath }/back/RoomType_delete?kindId=<s:property value="#type.kindId"/>' onclick="javascript: return confirm('真的要删除吗？');"><i class="fa fa-pencil"></i> 删除</a></button></td>
                                     </tr>
                                 </s:iterator>
                                     </tbody>
@@ -210,11 +210,11 @@
                         <form action="#">
                             <div class="form-group">
                                 <label for="editType">类别</label>
-                                <input type="text" id="editType" name="roomKind" class="form-control" >
+                                <input type="text" id="editType" name="roomKind"  value="精致大床房" class="form-control" >
                             </div>
                             <div class="form-group">
                                 <label for="intro">介绍</label>
-                                <input type="email" id="intro" name="introduction" class="form-control" >
+                                <input type="email" id="intro" name="introduction" value="这是精致大床房" class="form-control" >
                             </div>
                         </form>
                     </div>

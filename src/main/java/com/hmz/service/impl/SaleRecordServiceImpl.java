@@ -24,4 +24,25 @@ public class SaleRecordServiceImpl implements SaleRecordService {
         return saleRecordDao.getAllBooking();
     }
 
+    public void addOne(SaleRecord saleRecord) {
+        saleRecordDao.addOne(saleRecord);
+    }
+
+    public void changeState(SaleRecord saleRecord) {
+        saleRecordDao.changeState(saleRecord);
+    }
+
+    public SaleRecord getOneIn(Integer userId) {
+
+        return saleRecordDao.getOneIn(userId);
+    }
+
+    public void deleteOneBooking(Integer userId) {
+        saleRecordDao.deleteOneBooking(userId);
+    }
+
+    public SaleRecord getOneNoPay(Integer userId, String state) {
+        return saleRecordDao.getOneNoPay(userId,state);
+    }
+
 }

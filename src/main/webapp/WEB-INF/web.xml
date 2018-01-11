@@ -20,11 +20,10 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
-  <!--网站点击监听-->
-  <listener>
+  <!--监听网站点击量-->
+ <!-- <listener>
     <listener-class>com.hmz.util.UserCounterListener</listener-class>
-  </listener>
-
+  </listener>-->
 
   <!-- 指定Spring配置文件所在路径 -->
   <context-param>
@@ -32,8 +31,9 @@
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
 
-
-
+  <welcome-file-list>
+    <welcome-file>/jsp/font/index.jsp</welcome-file>
+  </welcome-file-list>
   <!-- session配置 -->
   <session-config>
     <session-timeout>15</session-timeout>

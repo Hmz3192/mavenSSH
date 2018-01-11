@@ -10,4 +10,13 @@ public interface SaleRecordDao {
 
     List<SaleRecord> getAllBooking();
 
+    void addOne(SaleRecord saleRecord);
+
+    void changeState(SaleRecord saleRecord);
+
+    SaleRecord getOneIn(Integer userId);
+
+    void deleteOneBooking(Integer userId);
+
+    SaleRecord getOneNoPay(Integer userId, String state);
 }

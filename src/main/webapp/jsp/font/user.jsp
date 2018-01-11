@@ -18,7 +18,24 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/bootstrap-maizi.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath }/assets/css/animate.css"/>
 
+    <style>
+        #xiugai{
+            width: 100%;
+            background: #9be9c2;
+            color: #FFFFFF;
+            line-height: 45px;
+            text-align: center;
+            height: 45px;
+            margin:0 auto;
+            margin-top:30px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-family: "微软雅黑";
+            font-size: 16px;
+            border: none;
+        }
 
+    </style>
 </head>
 <body>
 <!--导航-->
@@ -31,16 +48,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <s:a href="Font_toIndex" namespace="/font" class="navbar-brand">Love&Peace 酒店官网</s:a>
+            <s:a href="Font_toIndex" namespace="/" class="navbar-brand">Love&Peace 酒店官网</s:a>
 
         </div>
         <!--小屏幕导航按钮和Logo-->
         <!--导航-->
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><s:a href="Font_toIndex" namespace="/font">首页</s:a></li>
-                <li><s:a href="Font_toIndex" namespace="/font">浏览</s:a></li>
-                <li><s:a href="Font_toIndex" namespace="/font">预定</s:a></li>
+                <li><s:a href="Font_toIndex" namespace="/">首页</s:a></li>
+                <li><s:a href="Font_toIndex" namespace="/">浏览</s:a></li>
+                <li><s:a href="Font_toIndex" namespace="/">预定</s:a></li>
                 <li><a href="#contact">联系我们</a></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -58,17 +75,19 @@
                         <s:if test="#session.user == null">
                             <li>
                                     <%--<a href="login.html">&nbsp;&nbsp;<strong>登录</strong></a>--%>
-                                <s:a namespace="/font" action="Font_toLogin">登录</s:a>
+                                <s:a namespace="/" action="Font_toLogin">登录</s:a>
                             </li>
                         </s:if>
                         <s:else>
                             <%--<li class="divider"></li>--%>
                             <li>
-                                <a href="login.html">&nbsp;&nbsp;<strong>修改信息</strong></a>
+                                <%--<a href="login.h>?tml">&nbsp;&nbsp;<strong>修改信息</strong></a>--%>
+                                    <s:a action="Font_toUser" namespace="/">修改信息</s:a>
+
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <s:a href="User_out" namespace="/font">&nbsp;&nbsp;<strong>退出</strong></s:a>
+                                <s:a href="User_out" namespace="/">&nbsp;&nbsp;<strong>退出</strong></s:a>
 
                             </li>
                         </s:else>
@@ -89,24 +108,36 @@
             <div class="col-md-12">
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">
+                    <h3 style="margin-left: 25px">个人信息页面</h3>
                     <div class="panel-body">
-                        <form action="#">
+                        <form action="User_update" method="post">
                             <div class="form-group">
                                 <label for="addname1">姓名</label>
-                                <input type="text" id="addname1" class="form-control" value="张先生">
+                                <input type="text" id="addname1" class="form-control" name="account" value='<s:property value="#session.user.account"/>'>
                             </div>
                             <div class="form-group">
                                 <label for="addpassword">预留电话</label>
-                                <input type="text" id="addpassword" class="form-control" value="17857090000">
+                                <input type="text"  id="addpassword" class="form-control"  name="phone"  value='<s:property value="#session.user.phone"/>'>
                             </div>
                             <div class="form-group">
-                                <label for="adddate">入住日期</label>
-                                <input type="text" id="adddate" class="form-control" value="12/3">
+                                <label for="adddate">身份证验证</label>
+                                <s:if test="#session.user.account != null">
+                                    <input type="text"  disabled="disabled"  id="adddate" class="form-control" value="已验证">
+                                </s:if>
+                                <s:else>
+                                    <input type="text"  disabled="disabled"  id="adddate" class="form-control" value="未验证">
+                                </s:else>
                             </div>
                             <div class="form-group">
-                                <label for="addtype">预定房型</label>
-                                <input type="text" id="addtype" class="form-control" value="商务套房">
+                                <label for="adddate">VIP</label>
+                                <s:if test="#session.user.vip == 1">
+                                    <input type="text"   disabled="disabled"  id="adddate" class="form-control" value="超级VIP">
+                                </s:if>
+                                <s:else>
+                                    <input type="text"  disabled="disabled"  id="adddate" class="form-control" value="普通VIP">
+                                </s:else>
                             </div>
+                            <input type="submit"   value="修改信息"  id="xiugai">
                         </form>
                     </div>
                 </div>

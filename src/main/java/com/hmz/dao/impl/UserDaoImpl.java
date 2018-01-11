@@ -60,4 +60,15 @@ public class UserDaoImpl implements UserDao{
         this.template.update(user);
 
     }
+
+    public User findAndAdd(User user) {
+        List<User> userList = (List<User>) this.template.find("from User u where u.account = ?", user.getAccount());
+        if (userList.size() > 0) {
+            return userList.get(0);
+        }else {
+            this.template.save(user);
+            userList = (List<User>) this.template.find("from User u where u.account = ?", user.getAccount());
+            return userList.get(0);
+        }
+    }
 }

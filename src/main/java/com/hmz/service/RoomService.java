@@ -5,6 +5,7 @@ import com.hmz.entity.HotelRoom;
 import java.util.List;
 
 public interface RoomService {
+    HotelRoom findByNum(String num);
 
     public List<HotelRoom> getAllRoom();
 
