@@ -11,6 +11,14 @@
         </action>
     </package>
 
+    <package name="waterfallflow" namespace="/waterfall" extends="struts-default">
+        <action name="toPage" class="com.hmz.action.WaterfallFlow" method="toPage">
+            <result>/jsp/waterfall_part1.jsp</result>
+        </action>
+        <action name="waterfall" class="com.hmz.action.WaterfallFlow" method="waterfall">
+            <result>/jsp/waterfall_part2.jsp</result>
+        </action>
+    </package>
 
     <package name="back" extends="struts-default" namespace="/back"  strict-method-invocation="false">
         <action name="*_*" class="com.hmz.action.{1}Action" method="{2}">
